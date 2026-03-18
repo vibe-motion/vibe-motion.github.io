@@ -91,20 +91,23 @@ body {
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 0;
   margin: 16px auto 0;
+  justify-items: center;
 }
 
 .hero-brand {
   display: grid;
   gap: 0;
   padding: 4px 0;
+  justify-items: center;
 }
 
 .hero-copy {
   display: grid;
   align-content: start;
-  gap: 24px;
+  gap: 0;
+  justify-items: center;
 }
 
 .sr-only {
@@ -132,7 +135,7 @@ body {
 .pixel-title {
   position: relative;
   width: max-content;
-  max-width: 100%;
+  max-width: none;
   font-family: "Fira Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: clamp(7px, calc(1.15vw + 3px), 9px);
   line-height: 1.25;
@@ -164,11 +167,12 @@ body {
 
 .hero-description {
   margin: 0;
+  padding: 24px 0;
   color: var(--muted);
-  font-size: clamp(22px, 3vw, 34px);
+  font-size: clamp(10px, 2.8vw, 34px);
   line-height: 1.08;
   letter-spacing: -0.04em;
-  text-wrap: balance;
+  white-space: nowrap;
   text-align: center;
 }
 
@@ -210,7 +214,9 @@ body {
 }
 
 .terminal-wrap {
+  width: 100%;
   max-width: 640px;
+  margin: 0 auto;
 }
 
 .terminal-card {
@@ -268,14 +274,14 @@ body {
 }
 
 .terminal-body {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 10px;
-  padding: 18px;
+  padding: 18px 10px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   font-size: 15px;
   line-height: 1.7;
-  overflow-x: auto;
 }
 
 .prompt {
@@ -284,14 +290,20 @@ body {
 }
 
 code {
+  display: block;
+  min-width: 0;
+  overflow-x: auto;
   white-space: nowrap;
   word-break: normal;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+code::-webkit-scrollbar {
+  display: none;
 }
 
 .copy-btn {
-  position: absolute;
-  right: 12px;
-  top: calc(50% + 22px);
   border: none;
   border-radius: 0;
   background: transparent;
@@ -300,17 +312,17 @@ code {
   height: 24px;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   padding: 0;
   cursor: pointer;
   opacity: 1;
-  transform: translateY(-50%);
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .copy-btn:hover {
   background: transparent;
   color: #f5f5f5;
-  transform: translateY(calc(-50% - 1px));
+  transform: translateY(-1px);
 }
 
 .copy-btn .icon {
@@ -342,23 +354,17 @@ code {
 
 @media (min-width: 1024px) {
   .hero-grid {
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 56px;
-    align-items: start;
+    grid-template-columns: 1fr;
+    gap: 0;
+    justify-items: center;
     margin-top: 28px;
   }
 
   .hero-description {
-    text-align: left;
-  }
-
-  .pixel-title-wrap {
-    justify-content: flex-start;
+    text-align: center;
   }
 
   .pixel-title {
-    width: max-content;
-    max-width: none;
     font-size: 12px;
   }
 }
@@ -391,16 +397,11 @@ code {
   }
 
   .hero-grid {
-    gap: 28px;
+    gap: 0;
   }
 
   .hero-copy {
-    gap: 18px;
-  }
-
-  .hero-description {
-    font-size: 20px;
-    line-height: 1.12;
+    gap: 0;
   }
 
   .terminal-body {
