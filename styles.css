@@ -1,5 +1,5 @@
 :root {
-  --bg: #0a0a0a;
+  --bg: #000000;
   --surface: #111111;
   --surface-2: #181818;
   --border: #2a2a2a;
@@ -17,9 +17,7 @@ body {
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at 20% 0%, #1c1c1c 0%, #0f0f0f 35%, #060606 100%),
-    var(--bg);
+  background: var(--bg);
 }
 
 .page {
