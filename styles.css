@@ -23,8 +23,11 @@ body {
 .page {
   width: min(960px, 92vw);
   margin: 0 auto;
-  padding: 64px 0;
+  min-height: 100vh;
+  padding: 88px 0 72px;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .social-links {
@@ -89,24 +92,24 @@ body {
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0;
-  margin: 16px auto 0;
+  gap: clamp(44px, 8vh, 88px);
+  margin: 0 auto;
   justify-items: center;
 }
 
 .hero-brand {
   display: grid;
   gap: 0;
-  padding: 4px 0;
+  padding: 8px 0 0;
   justify-items: center;
 }
 
 .hero-copy {
   display: grid;
   align-content: start;
-  gap: 16px;
+  gap: 20px;
   justify-items: center;
-  margin-top: 20px;
+  width: 100%;
 }
 
 .sr-only {
@@ -356,9 +359,8 @@ code::-webkit-scrollbar {
 @media (min-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: clamp(56px, 9vh, 104px);
     justify-items: center;
-    margin-top: 28px;
   }
 
   .hero-description {
@@ -390,7 +392,9 @@ code::-webkit-scrollbar {
 
 @media (max-width: 640px) {
   .page {
-    padding: 40px 0;
+    min-height: auto;
+    padding: 40px 0 48px;
+    display: block;
   }
 
   .hero {
@@ -398,12 +402,11 @@ code::-webkit-scrollbar {
   }
 
   .hero-grid {
-    gap: 0;
+    gap: 28px;
   }
 
   .hero-copy {
-    gap: 12px;
-    margin-top: 14px;
+    gap: 14px;
   }
 
   .terminal-body {
