@@ -161,7 +161,9 @@ body {
 }
 
 .pixel-title-shadow {
-  color: #535353;
+  color: transparent;
+  -webkit-text-stroke: 0.85px #535353;
+  paint-order: stroke fill;
 }
 
 .hero-description {
