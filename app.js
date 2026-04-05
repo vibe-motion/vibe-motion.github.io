@@ -154,7 +154,7 @@
     };
   }
 
-  function initTitleAnimation(onComplete) {
+  function initTitleAnimation(onComplete, onIntroStart) {
     var stage = document.querySelector('[data-title-animation]');
 
     if (!stage) {
@@ -183,11 +183,22 @@
     var particleNodes = burst.particles.map(function (particle) {
       return particle.element;
     });
+    var introStarted = false;
+    function triggerIntroStart() {
+      if (introStarted) {
+        return;
+      }
+      introStarted = true;
+      if (typeof onIntroStart === 'function') {
+        onIntroStart();
+      }
+    }
     var titleTimeline = window.gsap.timeline({
       defaults: {
         ease: 'power2.out'
       },
       onComplete: function () {
+        triggerIntroStart();
         if (typeof onComplete === 'function') {
           onComplete();
         }
@@ -314,6 +325,8 @@
       opacity: 0
     }, 'impact+=0.57');
 
+    titleTimeline.call(triggerIntroStart, [], Math.max(titleTimeline.duration() - 0.2, 0));
+
     return true;
   }
 
@@ -349,7 +362,7 @@
 
   [
     { selector: '[data-intro-stage="copy"]', position: 0 },
-    { selector: '[data-intro-stage="terminal"]', position: 0.62 }
+    { selector: '[data-intro-stage="terminal"]', position: 0.48 }
   ].forEach(function (group) {
     var items = Array.prototype.slice.call(document.querySelectorAll(group.selector));
 
@@ -369,11 +382,18 @@
     }, group.position);
   });
 
-  var titleAnimationStarted = initTitleAnimation(function () {
+  var introTimelineStarted = false;
+  function playIntroTimeline() {
+    if (introTimelineStarted) {
+      return;
+    }
+    introTimelineStarted = true;
     introTimeline.play(0);
-  });
+  }
+
+  var titleAnimationStarted = initTitleAnimation(null, playIntroTimeline);
 
   if (!titleAnimationStarted) {
-    introTimeline.play(0);
+    playIntroTimeline();
   }
 })();
