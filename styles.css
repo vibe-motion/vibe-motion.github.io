@@ -36,12 +36,13 @@ body {
   right: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .social-link {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
+  position: relative;
   color: #bfbfbf;
   display: inline-grid;
   place-items: center;
@@ -55,8 +56,8 @@ body {
 
 .social-link svg,
 .social-link img {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 
 .social-link svg {
@@ -64,20 +65,35 @@ body {
 }
 
 .xhs-link svg {
-  width: 14.3px;
-  height: 14.3px;
+  width: 18px;
+  height: 18px;
+  position: relative;
+  z-index: 1;
   fill: #ffffff;
 }
 
-.xhs-link {
-  width: 21px;
-  height: 21px;
+.xhs-link::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
   background: #ff2442;
-  border-radius: 5px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
 }
 
-.xhs-link:hover {
+.xhs-link:hover::before {
   background: #ff4c65;
+}
+
+.douyin-link {
+  padding: 0;
+}
+
+.douyin-link img {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: block;
 }
 
 .hero h1 {
@@ -228,6 +244,38 @@ body {
 
 .command-copy {
   min-width: 0;
+}
+
+.command-copy-group {
+  --command-logo-height: 50px;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.command-logo-link {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  height: var(--command-logo-height);
+  color: #d8d8d8;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.command-logo-link:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.command-logo-link svg {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+.command-logo-github svg {
+  fill: currentColor;
 }
 
 .command-kicker,
@@ -448,6 +496,11 @@ code::-webkit-scrollbar {
 
   .command-row {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .command-copy-group {
+    --command-logo-height: 46px;
     gap: 12px;
   }
 
