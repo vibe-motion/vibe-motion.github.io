@@ -69,24 +69,38 @@
             </div>
           </div>
           <div class="hero-copy">
-            <p class="hero-description">
-              Build motion graphics animations through
-              <span class="vibe-tip-wrap">
-                <button
-                  id="vibe-tip-trigger"
-                  class="vibe-tip-trigger"
-                  type="button"
-                  aria-expanded="false"
-                  aria-describedby="vibe-tip"
-                >
-                  vibe coding
-                </button>
-                <span id="vibe-tip" class="vibe-tip" role="tooltip" hidden>
-                  coding via talking with ai agents
-                </span>
-              </span>
-              .
-            </p>
+            <section class="terminal-wrap" aria-label="terminal block">
+              <article class="terminal-card">
+                <header class="terminal-header">
+                  <div class="left">
+                    <div class="dots" aria-hidden="true">
+                      <span class="dot red"></span>
+                      <span class="dot yellow"></span>
+                      <span class="dot green"></span>
+                    </div>
+                  </div>
+                </header>
+
+                <div class="terminal-body">
+                  <span class="prompt">%</span>
+                  <code>npx skills add vibe-motion/skills</code>
+                  <button
+                    class="copy-btn"
+                    type="button"
+                    aria-label="Copy to clipboard"
+                    title="Copy to clipboard"
+                  >
+                    <svg class="icon icon-copy" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="9" y="9" width="10" height="11" rx="2" ry="2"></rect>
+                      <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <svg class="icon icon-check" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </button>
+                </div>
+              </article>
+            </section>
 
             <section class="terminal-wrap" aria-label="terminal block">
               <article class="terminal-card">
@@ -102,9 +116,8 @@
 
                 <div class="terminal-body">
                   <span class="prompt">%</span>
-                  <code id="terminal-code">npx skills add vibe-motion/skills</code>
+                  <code>npx create-vibe-motion</code>
                   <button
-                    id="copy-button"
                     class="copy-btn"
                     type="button"
                     aria-label="Copy to clipboard"

@@ -1,6 +1,4 @@
 (function () {
-  var copyBtn = document.getElementById('copy-button');
-  var codeEl = document.getElementById('terminal-code');
   var tipTrigger = document.getElementById('vibe-tip-trigger');
   var tipEl = document.getElementById('vibe-tip');
 
@@ -35,10 +33,6 @@
     });
   }
 
-  if (!copyBtn || !codeEl) {
-    return;
-  }
-
   function fallbackCopy(text) {
     var textArea = document.createElement('textarea');
     textArea.value = text;
@@ -51,7 +45,7 @@
     document.body.removeChild(textArea);
   }
 
-  function showCopied() {
+  function showCopied(copyBtn) {
     copyBtn.classList.add('success');
     copyBtn.setAttribute('aria-label', 'Copied');
     copyBtn.setAttribute('title', 'Copied');
@@ -62,18 +56,31 @@
     }, 1500);
   }
 
-  copyBtn.addEventListener('click', function () {
-    var text = codeEl.textContent || '';
+  var terminalBodies = document.querySelectorAll('.terminal-body');
 
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(showCopied).catch(function () {
-        fallbackCopy(text);
-        showCopied();
-      });
+  terminalBodies.forEach(function (terminalBody) {
+    var copyBtn = terminalBody.querySelector('.copy-btn');
+    var codeEl = terminalBody.querySelector('code');
+
+    if (!copyBtn || !codeEl) {
       return;
     }
 
-    fallbackCopy(text);
-    showCopied();
+    copyBtn.addEventListener('click', function () {
+      var text = codeEl.textContent || '';
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          showCopied(copyBtn);
+        }).catch(function () {
+          fallbackCopy(text);
+          showCopied(copyBtn);
+        });
+        return;
+      }
+
+      fallbackCopy(text);
+      showCopied(copyBtn);
+    });
   });
 })();

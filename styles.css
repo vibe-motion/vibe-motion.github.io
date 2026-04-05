@@ -104,8 +104,9 @@ body {
 .hero-copy {
   display: grid;
   align-content: start;
-  gap: 0;
+  gap: 16px;
   justify-items: center;
+  margin-top: 20px;
 }
 
 .sr-only {
@@ -166,7 +167,7 @@ body {
 .hero-description {
   margin: 0;
   padding: 24px 0;
-  color: var(--muted);
+  color: #ffffff;
   font-size: clamp(10px, 2.8vw, 34px);
   line-height: 1.08;
   letter-spacing: -0.04em;
@@ -213,7 +214,7 @@ body {
 
 .terminal-wrap {
   width: 100%;
-  max-width: 640px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
@@ -399,7 +400,8 @@ code::-webkit-scrollbar {
   }
 
   .hero-copy {
-    gap: 0;
+    gap: 12px;
+    margin-top: 14px;
   }
 
   .terminal-body {
