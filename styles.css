@@ -45,6 +45,18 @@ body {
   will-change: auto;
 }
 
+body.policy-page {
+  overflow: auto;
+  color: #ececec;
+  background:
+    linear-gradient(180deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0) 280px),
+    #050505;
+}
+
+body.policy-page a {
+  color: var(--accent);
+}
+
 .page {
   width: min(960px, 92vw);
   margin: 0 auto;
@@ -161,6 +173,89 @@ body {
   gap: 24px;
   justify-items: center;
   width: 100%;
+}
+
+.policy-shell {
+  width: min(100%, 880px);
+  margin: 0 auto;
+  padding: 40px 22px 64px;
+}
+
+.policy-home-link {
+  display: inline-flex;
+  margin-bottom: 42px;
+  color: #a7f3d0;
+  font-family: "Fira Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.policy-home-link:hover {
+  color: #ffffff;
+}
+
+.policy-document {
+  display: grid;
+  gap: 28px;
+}
+
+.policy-header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.policy-kicker,
+.policy-updated {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.policy-kicker {
+  color: #86efac;
+}
+
+.policy-document h1,
+.policy-document h2,
+.policy-document p,
+.policy-document ul {
+  margin: 0;
+}
+
+.policy-document h1 {
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: 56px;
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+.policy-document h2 {
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.policy-document section {
+  display: grid;
+  gap: 12px;
+}
+
+.policy-document p,
+.policy-document li {
+  color: #d7d7d7;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.policy-document ul {
+  padding-left: 1.3em;
+}
+
+.policy-document li + li {
+  margin-top: 6px;
 }
 
 .sr-only {
@@ -681,6 +776,22 @@ code::-webkit-scrollbar {
 
   .social-links-list {
     gap: 10px;
+  }
+
+  .policy-shell {
+    padding: 28px 18px 48px;
+  }
+
+  .policy-home-link {
+    margin-bottom: 32px;
+  }
+
+  .policy-document {
+    gap: 24px;
+  }
+
+  .policy-document h1 {
+    font-size: 34px;
   }
 
   .title-impact-dot,
