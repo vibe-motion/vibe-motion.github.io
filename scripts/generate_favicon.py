@@ -18,20 +18,13 @@ def scaled_box(box: tuple[int, int, int, int], scale: int) -> tuple[int, int, in
 
 
 def generate_favicon(output: Path, size: int = CANVAS_SIZE) -> None:
-    """Render the rounded background and three onion-skin animation frames."""
+    """Render three onion-skin animation frames on a transparent canvas."""
     scale = SUPERSAMPLE
     render_size = CANVAS_SIZE * scale
 
-    # The transparent canvas leaves genuinely rounded outer corners in the PNG.
     image = Image.new("RGBA", (render_size, render_size), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image, "RGBA")
-    draw.rounded_rectangle(
-        (0, 0, render_size - 1, render_size - 1),
-        radius=72 * scale,
-        fill=(0, 0, 0, 255),
-    )
 
-    radius = 104
+    radius = 132
     # Draw the same purple back to front at increasing opacity. The translucent
     # trailing frames create the familiar onion-skin overlap.
     frames = (
